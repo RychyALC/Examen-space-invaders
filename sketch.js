@@ -9,20 +9,29 @@ function setup() {
   nave = new Nave();
 
   //intente usar el for anidado y me lo dibujaba mal siempre, por eso este desastre
- for (var i = 0; i < 5; i++) {
+ for (var i = 0; i < 7; i++) {
     enemigos[i] = new Enemigo( 80, i * 40 +60);
   }
-  for (var i = 0; i < 5; i++) {
-    enemigos[i+5] = new Enemigo(80 + 80, i * 40 +60);
+  for (var i = 0; i < 7; i++) {
+    enemigos[i+7] = new Enemigo(50 + 80, i * 40 +60);
  }
- for (var i = 0; i < 5; i++) {
-  enemigos[i+10] = new Enemigo(160 + 80, i * 40 +60);
+ for (var i = 0; i < 7; i++) {
+  enemigos[i+14] = new Enemigo(100 + 80, i * 40 +60);
  }
- for (var i = 0; i < 5; i++) {
-  enemigos[i+15] = new Enemigo(240 + 80, i * 40 +60);
+ for (var i = 0; i < 7; i++) {
+  enemigos[i+21] = new Enemigo(150 + 80, i * 40 +60);
  }
- for (var i = 0; i < 5; i++) {
-  enemigos[i+20] = new Enemigo(320 + 80, i * 40 +60);
+ for (var i = 0; i < 7; i++) {
+  enemigos[i+28] = new Enemigo(200 + 80, i * 40 +60);
+ }
+ for (var i = 0; i < 7; i++) {
+  enemigos[i+35] = new Enemigo(250 + 80, i * 40 +60);
+ }
+ for (var i = 0; i < 7; i++) {
+  enemigos[i+42] = new Enemigo(300 + 80, i * 40 +60);
+ }
+ for (var i = 0; i < 7; i++) {
+  enemigos[i+49] = new Enemigo(350 + 80, i * 40 +60);
  }
  
 }
@@ -36,7 +45,7 @@ function draw() {
     disparos[i].move();
     for (var j = 0; j < enemigos.length; j++) {
       if (disparos[i].hits(enemigos[j])) {
-        enemigos[j].evaporate();
+        enemigos.splice(j,1);
         disparos[i].evaporate();
       }
     }
@@ -63,6 +72,30 @@ function draw() {
   for (var i = disparos.length - 1; i >= 0; i--) {
     if (disparos[i].toDelete) {
       disparos.splice(i, 1);
+    }
+  }
+  
+  if(enemigos.length === 0){
+    fill(255);
+    rectMode(CENTER);
+    rect(width/2,height/2,100,25);
+    fill(0);
+    textSize(20);
+    text("Ganaste",width/2-35,height/2+5);
+  }
+  for (var j = 0; j < enemigos.length; j++) {
+    
+    if (enemigos[j].y > height) {
+      fill(255);
+      rectMode(CENTER);
+      rect(width/2,height/2,100,25);
+      fill(0);
+      textSize(20);
+      text("Perdiste",width/2-35,height/2+5);
+      for (var j = 0; j < enemigos.length; j++) {
+        enemigos.splice(0,enemigos.length);
+      }
+      
     }
   }
 }

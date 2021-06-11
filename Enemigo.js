@@ -4,7 +4,7 @@ function Enemigo(x, y) {
   this.r = 15;
   this.toDelete = false;
 
-  this.xdir = 1;
+  this.xdir = 2;
 
   this.evaporate = function() {
     this.toDelete = true;
