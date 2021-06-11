@@ -82,22 +82,25 @@ function draw() {
     fill(0);
     textSize(20);
     text("Ganaste",width/2-35,height/2+5);
-  }
-  for (var j = 0; j < enemigos.length; j++) {
+  }else{
+    for (var j = 0; j < enemigos.length; j++) {
     
-    if (enemigos[j].y > height) {
-      fill(255);
-      rectMode(CENTER);
-      rect(width/2,height/2,100,25);
-      fill(0);
-      textSize(20);
-      text("Perdiste",width/2-35,height/2+5);
-      for (var j = 0; j < enemigos.length; j++) {
-        enemigos.splice(0,enemigos.length);
+      if (enemigos[j].y > height) {
+        fill(255);
+        rectMode(CENTER);
+        rect(width/2,height/2,100,25);
+        fill(0);
+        textSize(20);
+        text("Perdiste",width/2-35,height/2+5);
+        for (var j = 0; j < enemigos.length; j++) {
+          enemigos.splice(0,enemigos.length);
+        }
+        noLoop();
+        
       }
-      
     }
   }
+
 }
 
 function keyReleased() {
