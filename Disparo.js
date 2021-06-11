@@ -14,9 +14,9 @@ function Disparo(x, y) {
     this.toDelete = true;
   };
 
-  this.hits = function(flower) {
-    var d = dist(this.x, this.y, flower.x, flower.y);
-    if (d < this.r + flower.r) {
+  this.hits = function(enemigo) {
+    var d = dist(this.x, this.y, enemigo.x, enemigo.y);
+    if (d < this.r + enemigo.r) {
       return true;
     } else {
       return false;
